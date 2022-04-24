@@ -1,5 +1,7 @@
 package com.fuyunwang.rpc_infra_netty.registry;
 
+import com.fuyunwang.rpc_infra_netty.registry.zookeeper.ProviderNodeInfo;
+
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +10,7 @@ import java.util.Map;
  * @Title URL
  * @Author fyw
  * @Date 2022/4/24 22:00
- * @Description:
+ * @Description: 配置存储
  */
 public class URL {
     /**
@@ -61,7 +63,6 @@ public class URL {
 
     /**
      * 将URL转换为写入zk的provider节点下的一段字符串
-     *
      * @param url
      * @return
      */
@@ -73,7 +74,6 @@ public class URL {
 
     /**
      * 将URL转换为写入zk的consumer节点下的一段字符串
-     *
      * @param url
      * @return
      */
@@ -85,7 +85,6 @@ public class URL {
 
     /**
      * 将某个节点下的信息转换为一个Provider节点对象
-     *
      * @param providerNodeStr
      * @return
      */
@@ -95,9 +94,5 @@ public class URL {
         providerNodeInfo.setServiceName(items[2]);
         providerNodeInfo.setAddress(items[4]);
         return providerNodeInfo;
-    }
-
-    public static void main(String[] args) {
-        buildURLFromUrlStr("/irpc/org.idea.irpc.framework.interfaces.DataService/provider/192.168.43.227:9092");
     }
 }
