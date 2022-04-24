@@ -15,7 +15,7 @@
     <description>rpc_infra_netty</description>
     <properties>
         <java.version>1.8</java.version>
-        <netty.version>4.1.6.Final</netty.version>
+        <netty.version>4.1.74.Final</netty.version>
         <fastjson.version>1.2.29</fastjson.version>
         <jboss-marshalling-river.version>1.4.11.Final</jboss-marshalling-river.version>
         <jboss-marshalling-serial.version>1.4.11.Final</jboss-marshalling-serial.version>

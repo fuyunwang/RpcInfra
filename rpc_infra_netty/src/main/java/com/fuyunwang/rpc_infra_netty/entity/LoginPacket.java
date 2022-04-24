@@ -13,7 +13,7 @@ import static com.fuyunwang.rpc_infra_netty.protocol.command.Command.LOGIN_REQUE
  * @Description:
  */
 @Data
-public class LoginRequestPacket extends Packet {
+public class LoginPacket extends Packet {
     private String username;
     private String password;
     @Override
