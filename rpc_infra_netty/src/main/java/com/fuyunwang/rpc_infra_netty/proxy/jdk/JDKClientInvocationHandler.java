@@ -11,7 +11,7 @@ import java.util.UUID;
  * @Title JDKClientInvocationHandler
  * @Author fyw
  * @Date 2022/4/24 15:19
- * @Description: 代理对象实现从客户端到服务端的首次数据发送
+ * @Description: 代理对象实现从客户端到服务端的首次数据发送，封装请求对象并存入队列中、专门的IO线程用于轮询队列发送数据
  */
 public class JDKClientInvocationHandler implements InvocationHandler {
 
@@ -36,6 +36,7 @@ public class JDKClientInvocationHandler implements InvocationHandler {
         long beginTime=System.currentTimeMillis();
         while (System.currentTimeMillis()-beginTime<3*1000){    // 主程序中有单独的IO线程发送数据到服务端，所以这里只需要监听超时时长
             final Object o = ProviderClass.getInstance().RESP_MAP.get(invocationPacket.getUuid());
+            // 初始put的是OBJECT，如果类型变化说明客户端已经收到了服务端的响应并做出了处理
             if (o instanceof RpcInvocationPacket){
                 return ((RpcInvocationPacket)o).getResponse();
             }
